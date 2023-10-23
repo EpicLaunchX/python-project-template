@@ -32,5 +32,4 @@ jobs:
         run: curl -Os https://cli.codecov.io/latest/linux/codecov && chmod +x codecov
 
       - name: Upload coverage to Codecov
-        run: ./codecov --codecov-yml-path=./codecov.yml do-upload --file=./coverage.xml --commit-sha ${{ github.event.pull_request.head.sha }}
-        
+        run: ./codecov upload-process --git-service github --file ./coverage.xml --commit-sha ${{ github.event.pull_request.head.sha }}
