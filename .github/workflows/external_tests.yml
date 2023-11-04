@@ -3,10 +3,10 @@ name: Fetch and Run Base Repository Tests
 on:
   pull_request:
     branches:
-      - 'sprint_*_task_*'
+      - main
 
 jobs:
-  test:
+  external-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR code
@@ -33,12 +33,19 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ${{ env.BASE_REPO_NAME }}
-          ref: main
+          ref: ${{ github.head_ref }}
           path: base-tests
 
+      - name: List contents of the base-tests directory
+        run: ls -R base-tests/
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: | 
+          pip install --upgrade pip && pip install virtualenv && virtualenv .venv
+          make install-flit && FLIT_ROOT_INSTALL=1 make install-dev
 
       - name: Run tests
-        run: pytest ${{ env.TEST_PATH }}
-        working-directory: base-tests
+        run: |
+          .venv/bin/python -m pytest base-tests/${{ env.TEST_PATH }}
+        env:
+          PYTHONPATH: ${{ github.workspace }}

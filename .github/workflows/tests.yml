@@ -18,11 +18,13 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: | 
+          pip install --upgrade pip && pip install virtualenv && virtualenv .venv
+          make install-flit && FLIT_ROOT_INSTALL=1 make install-dev
 
       - name: Run Python tests
-        run: pytest --junit-xml=test-results/results.xml
+        run: .venv/bin/python -m pytest --junit-xml=test-results/results.xml
 
       - name: Comment on PR
         uses: EnricoMi/publish-unit-test-result-action@v2

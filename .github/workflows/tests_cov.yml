@@ -22,11 +22,13 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: | 
+          pip install --upgrade pip && pip install virtualenv && virtualenv .venv
+          make install-flit && FLIT_ROOT_INSTALL=1 make install-dev
         
       - name: Run tests and collect coverage
-        run: pytest --cov --cov-report=xml
+        run: .venv/bin/python pytest --cov --cov-report=xml
 
       - name: Install Codecov
         run: curl -Os https://cli.codecov.io/latest/linux/codecov && chmod +x codecov
