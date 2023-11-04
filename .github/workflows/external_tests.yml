@@ -1,0 +1,44 @@
+name: Fetch and Run Base Repository Tests
+
+on:
+  pull_request:
+    branches:
+      - 'sprint_*_task_*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Extract base repository name and set as ENV variable
+        run: |
+          BASE_REPO_NAME=$(echo ${{ github.repository }} | sed 's/-[0-9a-f-]*$/-base/')
+          echo "BASE_REPO_NAME=$BASE_REPO_NAME" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Parse branch name and define test path
+        run: |
+          BRANCH_NAME=${{ github.head_ref }}
+          SPRINT_NAME=$(echo $BRANCH_NAME | grep -oP 'sprint_\d+')
+          TASK_NAME=$(echo $BRANCH_NAME | grep -oP 'task_\d+')
+          TEST_PATH="tests/$SPRINT_NAME/$TASK_NAME"
+          echo "TEST_PATH=$TEST_PATH" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Fetch tests from base repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.BASE_REPO_NAME }}
+          ref: main
+          path: base-tests
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest ${{ env.TEST_PATH }}
+        working-directory: base-tests
