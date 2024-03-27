@@ -18,9 +18,9 @@ jobs:
         id: check_branch
         run: |
           PR_BRANCH="${{ github.head_ref }}"
-          BRANCH_PATTERN="^sprint_[0-9]+_task_[0-9]+$"
+          BRANCH_PATTERN="^launch_[0-9]+_task_[0-9]+$"
           if ! [[ "$PR_BRANCH" =~ $BRANCH_PATTERN ]]; then
-            echo "Branch name does not follow the 'sprint_{number}_task_{number}' pattern."
+            echo "Branch name does not follow the 'launch_{number}_task_{number}' pattern."
             echo "valid=false" >> $GITHUB_ENV
           else
             echo "Branch name follows the correct pattern."

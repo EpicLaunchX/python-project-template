@@ -23,7 +23,7 @@ jobs:
       - name: Parse branch name and define test path
         run: |
           BRANCH_NAME=${{ github.head_ref }}
-          SPRINT_NAME=$(echo $BRANCH_NAME | grep -oP 'sprint_\d+')
+          SPRINT_NAME=$(echo $BRANCH_NAME | grep -oP 'launch_\d+')
           TASK_NAME=$(echo $BRANCH_NAME | grep -oP 'task_\d+')
           TEST_PATH="tests/$SPRINT_NAME/$TASK_NAME"
           echo "TEST_PATH=$TEST_PATH" >> $GITHUB_ENV

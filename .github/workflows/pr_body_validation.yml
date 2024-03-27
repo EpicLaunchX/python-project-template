@@ -12,18 +12,21 @@ jobs:
   check-pr-body:
     runs-on: ubuntu-latest
     outputs:
-      body_check_failed: ${{ steps.body_check.outputs.body_check_failed }}
+      body_check_failed: ${{ steps.body_check.outputs.valid }}
     steps:
       - name: Check if the PR body contains 'Closes #'
         id: body_check
         run: |
-          echo "BODY_CHECK_FAILED=false" >> $GITHUB_ENV
-          if ! echo "${{ github.event.pull_request.body }}" | grep -iqE "Closes\s+#\d+"; then
-            echo "BODY_CHECK_FAILED=true" >> $GITHUB_ENV
+          PR_BODY_PATTERN="Closes #[0-9]+"
+          PR_BODY="${{ github.event.pull_request.body }}"
+          if ! [[ "$PR_BODY" =~ $PR_BODY_PATTERN ]]; then
+            echo "valid=false" >> $GITHUB_ENV
+          else
+            echo "valid=true" >> $GITHUB_ENV
           fi
 
       - name: Comment on PR, if body check, fails
-        if: ${{ env.BODY_CHECK_FAILED == 'true' }}
+        if: env.valid == 'false'
         uses: actions/github-script@v5
         with:
           script: |
@@ -38,7 +41,7 @@ jobs:
             });
             
       - name: Fail workflow if PR description is missing Closes #
-        if: ${{ env.BODY_CHECK_FAILED == 'true' }}'
+        if: env.valid == 'false'
         run: |
           echo "Failing the workflow because PR description is missing Closes #."
           exit 1
