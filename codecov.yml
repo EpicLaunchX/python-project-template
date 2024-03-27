@@ -1,9 +1,0 @@
-coverage:
-  status:
-    project: default
-    patch: default
-  target: 100%
-  threshold: 98%
-  warn_threshold: 95%
-  removed_code_behavior: off
-  require_ci_to_pass: false
