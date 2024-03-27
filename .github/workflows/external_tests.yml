@@ -16,7 +16,7 @@ jobs:
 
       - name: Extract base repository name and set as ENV variable
         run: |
-          BASE_REPO_NAME=$(echo ${{ github.repository }} | sed 's/-[0-9a-f-]*$/-base/')
+          BASE_REPO_NAME=$(echo ${{ github.repository }} | cut -d '-' -f 2-)
           echo "BASE_REPO_NAME=$BASE_REPO_NAME" >> $GITHUB_ENV
         shell: bash
 
@@ -32,7 +32,7 @@ jobs:
       - name: Fetch tests from base repository
         uses: actions/checkout@v3
         with:
-          repository: ${{ env.BASE_REPO_NAME }}
+          repository: EpicLaunchX/${{ env.BASE_REPO_NAME }}
           ref: ${{ github.head_ref }}
           path: base-tests
 
