@@ -32,7 +32,7 @@ jobs:
         id: coverage_check
         run: |
           .venv/bin/python -m pytest --cov=src --cov-report=term-missing
-          .venv/bin/python coverage report --fail-under=80
+          .venv/bin/python coverage report --fail-under=96
         continue-on-error: true
 
       - name: Post PR comment about coverage failure
