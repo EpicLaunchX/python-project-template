@@ -7,7 +7,7 @@ name = "pytemplate"
 authors = [
     { name = "rzayev sehriyar", email = "rzayev.sehriyar@gmail.com" },
 ]
-dynamic = ["version", "description"]
+dynamic = ["version"]
 description = "This is a Python Project Template"
 # Add here the production dependencies
 dependencies = []
