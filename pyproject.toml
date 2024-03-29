@@ -7,7 +7,7 @@ name = "pytemplate"
 authors = [
     { name = "rzayev sehriyar", email = "rzayev.sehriyar@gmail.com" },
 ]
-dynamic = ["version"]
+dynamic = ["version", "description"]
 description = "This is a Python Project Template"
 # Add here the production dependencies
 dependencies = []
@@ -36,7 +36,7 @@ test = [
 [tool.isort]
 profile = "black"
 line_length = 140
-py_version = 310
+py_version = 311
 order_by_type = false
 skip = [".gitignore", ".dockerignore"]
 extend_skip = [".md", ".json"]
@@ -50,7 +50,7 @@ exclude = ["__init__.py"]
 
 [tool.black]
 line-length = 140
-target-version = ['py310']
+target-version = ['py311']
 include = '\.pyi?$'
 
 [tool.bandit]
