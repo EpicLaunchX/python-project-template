@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: conventional_commit
+    name: conventional-commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
