@@ -36,7 +36,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const message = `Hello @${{ github.actor }} 👋, \
-            \n\nThe branch name \`${{ github.head_ref }}\` does not follow the required pattern 'sprint\\_{number}\\_task\\_{number}'. \
+            \n\nThe branch name \`${{ github.head_ref }}\` does not follow the required pattern 'launch\\_{number}\\_task\\_{number}'. \
             \nPlease update the branch name to match the required format.`;
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
