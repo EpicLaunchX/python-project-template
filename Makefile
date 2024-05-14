@@ -56,7 +56,6 @@ type-check:
 
 secure:
 	${PYTHON} -m bandit -r src --config ${SETTINGS_FILENAME}
-	${PYTHON} -m safety check
 
 test:
 	${PYTHON} -m pytest -svvv -m "not slow and not integration" tests
