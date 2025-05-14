@@ -27,7 +27,7 @@ If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
 1. **Clone the repository**
    ```bash
    git clone <your-repo-url>
-   cd python-project-template
+   cd <your-repo-name>
    ```
 
 2. **Create a virtual environment**
