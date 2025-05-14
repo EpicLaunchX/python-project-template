@@ -1,30 +1,111 @@
-# This is a Python Project Template
+## 👋 Welcome!
 
-You need to use this template for all Python projects. (Change me...)
+This template helps you start Python projects and complete EpicLaunchX tasks. 
+Just follow the steps below!
 
-## Setup
+> **Note:** You do **not** need to fork this repository. You have been added as a collaborator, so please work directly in this repo and create your branches here.
 
-(Change me...)
+## ✅ First Steps Checklist
 
-Create virtualenv in the project root directory named ".venv"
-
-### Commands
-
-`make install-flit`
-
-`make install-dev`
-
-`make run` or `make test`
+- [ ] Accept the invitation for being a collaborator in this repo
+- [ ] Clone the repo
+- [ ] Create and activate virtualenv
+- [ ] Install dependencies
+- [ ] Implement your first task
+- [ ] Run tests
 
 
-## Flow
+## 💡 Need help?
 
-(Change me...)
+If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
 
-## Current limitations & future improvements
+---
 
-(Change me...)
+## 🚀 Quick Start
 
-#### Authors:  (Change me...)
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd python-project-template
+   ```
 
+2. **Create a virtual environment**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
 
+3. **Install dependencies**
+   ```bash
+   make install-flit
+   make install-dev
+   ```
+
+4. **Run tests**
+   ```bash
+   make test
+   ```
+
+---
+
+## 🪟 Windows Users
+
+If you are on Windows and can't use `make`, you have two options:
+
+1. **Recommended:** Use [WSL](https://docs.microsoft.com/en-us/windows/wsl/) or [Git Bash](https://gitforwindows.org/) to run Makefile commands.
+2. **Manual:** Run the equivalent Python commands below:
+
+| Make Command         | Manual Command(s)                                                                 |
+|----------------------|-----------------------------------------------------------------------------------|
+| make install-flit    | python -m pip install flit==3.8.0                                                 |
+| make install-dev     | python -m flit install -s --env --deps=develop --symlink                          |
+| make test            | python -m pytest -svvv -m "not slow and not integration" tests                  |
+| make format          | python -m isort src tests --force-single-line-imports --settings-file pyproject.toml <br> python -m autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place src --exclude=__init__.py <br> python -m black src tests --config pyproject.toml <br> python -m isort src tests --settings-file pyproject.toml |
+
+If you get stuck, ask for help in our [Discord](https://discord.gg/2R4BdaczUG)!
+
+---
+
+## 🛠️ Project Structure
+
+```
+src/
+  pytemplate/
+    ...              # Layers of the application (domain, service, etc.) 
+tests/               # Add your tests here
+Makefile             # Common commands (install, run, test, lint, etc.)
+.pre-commit-config.yaml  # Pre-commit hooks for code quality
+pyproject.toml       # Project configuration and dependencies
+```
+
+---
+
+## 💡 Features
+
+- **Modern Python packaging** with [flit](https://flit.readthedocs.io/)
+- **Pre-configured code quality tools:** black, isort, flake8, bandit, pytype
+- **Easy testing** with pytest
+- **Pre-commit hooks** for consistent code style
+- **Makefile** for common developer tasks
+
+---
+
+## 🧑‍💻 Development Flow
+
+1. Edit your code in `src/pytemplate/`.
+2. Add tests in `tests/`.
+3. Use `make format` and `make lint` to keep your code clean.
+4. Commit with confidence—pre-commit hooks will check your code!
+
+---
+
+## 📝 FAQ
+
+**Q: I get an error about flit not found!**  
+A: Run `make install-flit` first.
+
+**Q: How do I add a new dependency?**  
+A: Add it to `pyproject.toml` under `[project.dependencies]` and run `make install-dev`.
+
+**Q: How do I run a specific test?**  
+A: Use `pytest tests/test_yourfile.py::test_function_name`.

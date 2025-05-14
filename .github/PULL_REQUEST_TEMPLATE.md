@@ -1,21 +1,35 @@
-# Please change me, with the task(issue) number
+# 🚀 Thank you for your contribution!
+
+**Branch naming:** Please use the pattern `launch_<launch_number>_task_<task_number>` (e.g., `launch_1_task_1`).
+**Closing issues:** In the PR body, use `Closes #<issue_number>` where `<issue_number>` matches the task number in your branch name (e.g., `task_1` → `Closes #1`).
+
+If you're unsure about anything, just ask on [Discord](https://discord.gg/2R4BdaczUG)!
+
 Closes #_issue_number
 
-## Description(optional)
-<!-- Add a description of your changes here (Optional) -->
+## Description (optional)
+<!-- What does this PR do? What problem does it solve? -->
 
-## Checklist(this is for you as a checklist):
-- [ ] I run `make format`
-- [ ] I run `make lint`
-- [ ] I use type hints in my code. `make type-check`
-- [ ] I have added pytest tests (unit tests)
-- [ ] Tests are passing locally - use `make test` command
-- [ ] I am pretty sure that my commits follow conventional commit style
+## Checklist (tick what you did)
+- [ ] I ran `make format` to auto-format my code
+- [ ] I ran `make lint` to check for style issues
+- [ ] I used type hints in my code (`make type-check`)
+- [ ] I added or updated tests (unit tests, if needed)
+- [ ] All tests pass locally (`make test`)
+- [ ] My commits follow [conventional commit style](https://www.conventionalcommits.org/)
 
-## Additional Notes(optional)
-<!-- Add any additional notes or context here (Optional) -->
+<!-- Not sure about any of these? It's okay! Just ask for help. -->
 
-## AI Review Note
-If you get stuck or believe the AI review made a mistake, please close this PR and open a new one from scratch.
+## Additional Notes (optional)
+<!-- Anything else the reviewer should know? -->
 
-This helps maintain a clean review process and ensures we can start fresh if needed.
+---
+
+### 🤖 AI Review Note
+If you get stuck or believe the AI review made a mistake, you can close this PR and open a new one from scratch.  
+This helps us keep the review process clean and efficient.
+
+---
+
+**Need help?**  
+Ask in the PR comments or on [Discord](https://discord.gg/2R4BdaczUG)!
