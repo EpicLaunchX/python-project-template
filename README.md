@@ -1,6 +1,6 @@
 ## 👋 Welcome!
 
-This template helps you start Python projects and complete EpicLaunchX tasks. 
+This template helps you start Python projects and complete [EpicLaunchX](https://docs.epiclaunchx.io/how-it-works/) tasks. 
 Just follow the steps below!
 
 > **Note:** You do **not** need to fork this repository. You have been added as a collaborator, so please work directly in this repo and create your branches here.
@@ -13,6 +13,7 @@ Just follow the steps below!
 - [ ] Install dependencies
 - [ ] Implement your first task
 - [ ] Run tests
+- [ ] Open your first Pull Request(pass all checks and earn points upon successful Merge)
 
 
 ## 💡 Need help?
@@ -41,7 +42,12 @@ If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
    make install-dev
    ```
 
-4. **Run tests**
+4. **Activate pre-commit hooks**
+    ```bash
+    make enable-pre-commit-hooks
+    ```
+
+5. **Run tests**
    ```bash
    make test
    ```
@@ -59,8 +65,8 @@ If you are on Windows and can't use `make`, you have two options:
 |----------------------|-----------------------------------------------------------------------------------|
 | make install-flit    | python -m pip install flit==3.8.0                                                 |
 | make install-dev     | python -m flit install -s --env --deps=develop --symlink                          |
-| make test            | python -m pytest -svvv -m "not slow and not integration" tests                  |
-| make format          | python -m isort src tests --force-single-line-imports --settings-file pyproject.toml <br> python -m autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place src --exclude=__init__.py <br> python -m black src tests --config pyproject.toml <br> python -m isort src tests --settings-file pyproject.toml |
+| make test            | python -m pytest -svvv -m "not slow and not integration" tests                    |
+| make format          | see [Makefile](./Makefile)                                                        |
 
 If you get stuck, ask for help in our [Discord](https://discord.gg/2R4BdaczUG)!
 
