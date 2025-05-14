@@ -16,7 +16,8 @@ Closes #_issue_number
 - [ ] I used type hints in my code (`make type-check`)
 - [ ] I added or updated tests (unit tests, if needed)
 - [ ] All tests pass locally (`make test`)
-- [ ] My commits follow [conventional commit style](https://www.conventionalcommits.org/)
+- [ ] My commits follow [conventional commit style](https://www.conventionalcommits.org/en/v1.0.0/)
+- [ ] My PR title follows [conventional commit style](https://www.conventionalcommits.org/en/v1.0.0/) (e.g., feat: add new login page)
 
 <!-- Not sure about any of these? It's okay! Just ask for help. -->
 
