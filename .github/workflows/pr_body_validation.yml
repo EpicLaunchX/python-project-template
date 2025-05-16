@@ -14,22 +14,17 @@ jobs:
   check-pr-body:
     runs-on: ubuntu-latest
     outputs:
-      body_check_failed: ${{ steps.body_check.outputs.valid }}
+      body_check_failed: ${{ steps.regex.outputs.match }}
     steps:
       - name: Check if the PR body contains 'Closes #'
-        id: body_check
-        run: |
-          set +e
-          PR_BODY_PATTERN="Closes #[0-9]+"
-          PR_BODY=$(printf '%s' "${{ github.event.pull_request.body }}")
-          if ! echo "$PR_BODY" | grep -Eq "$PR_BODY_PATTERN"; then
-            echo "valid=false" >> $GITHUB_ENV
-          else
-            echo "valid=true" >> $GITHUB_ENV
-          fi
+        id: regex
+        uses: actions-ecosystem/action-regex-match@v2
+        with:
+          text: ${{ github.event.pull_request.body }}
+          regex: 'Closes #[0-9]+'
 
-      - name: Comment on PR, if body check, fails
-        if: env.valid == 'false'
+      - name: Comment on PR, if body check fails
+        if: steps.regex.outputs.match == ''
         uses: actions/github-script@v5
         with:
           script: |
@@ -44,7 +39,7 @@ jobs:
             });
             
       - name: Fail workflow if PR description is missing Closes #
-        if: env.valid == 'false'
+        if: steps.regex.outputs.match == ''
         run: |
           echo "Failing the workflow because PR description is missing Closes #."
           exit 1
