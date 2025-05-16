@@ -19,8 +19,9 @@ jobs:
       - name: Check if the PR body contains 'Closes #'
         id: body_check
         run: |
+          set +e
           PR_BODY_PATTERN="Closes #[0-9]+"
-          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_BODY=$(printf '%s' "${{ github.event.pull_request.body }}")
           if ! echo "$PR_BODY" | grep -Eq "$PR_BODY_PATTERN"; then
             echo "valid=false" >> $GITHUB_ENV
           else
