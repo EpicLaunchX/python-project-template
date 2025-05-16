@@ -21,7 +21,7 @@ jobs:
         run: |
           PR_BODY_PATTERN="Closes #[0-9]+"
           PR_BODY="${{ github.event.pull_request.body }}"
-          if ! [[ "$PR_BODY" =~ $PR_BODY_PATTERN ]]; then
+          if ! echo "$PR_BODY" | grep -Eq "$PR_BODY_PATTERN"; then
             echo "valid=false" >> $GITHUB_ENV
           else
             echo "valid=true" >> $GITHUB_ENV
