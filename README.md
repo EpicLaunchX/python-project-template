@@ -22,15 +22,13 @@ If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
 
 ## 🚀 Quick Start
 
-### Option 1: One-Click Cloud Setup (Recommended)
 
-1. **Click "Open in Gitpod" above or use the button on the platform.**
-2. Wait for the environment to initialize (dependencies are installed automatically).
-3. Start coding in your browser!
-4. To run tests, open a terminal and type:
-   ```bash
-   make test
-   ```
+### 🚀 Cloud Development with GitHub Codespaces
+
+> **Tip:**
+> For the easiest onboarding, use [GitHub Codespaces](https://github.com/features/codespaces) for a one-click, cloud-based development environment.
+>
+> Just click the **"Code"** button at the top of this repository and select **"Create codespace on main"**. All dependencies and tools will be set up automatically!
 
 ---
 
@@ -82,7 +80,6 @@ If you are on Windows and can't use `make`, you have two options:
 
 If you get stuck, ask for help in our [Discord](https://discord.gg/2R4BdaczUG)!
 
----
 
 ## 🛠️ Project Structure
 
