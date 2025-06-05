@@ -1,10 +1,7 @@
 {
-  "name": "Python Project Template",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
+  "name": "Python Project Template (Python 3.12)",
+  "build": {
+    "dockerfile": "Dockerfile"
   },
   "postCreateCommand": "make create-venv && make install-flit && make install-dev && make enable-pre-commit-hooks",
   "customizations": {
