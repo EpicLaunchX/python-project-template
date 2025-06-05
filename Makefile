@@ -8,7 +8,7 @@ endif
 
 SETTINGS_FILENAME = pyproject.toml
 
-PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run
+PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run activate-venv create-venv
 
 help:
 	@echo "--------------- HELP ---------------"
@@ -68,3 +68,16 @@ test-integration:
 
 run:
 	${PYTHON} -m src.pytemplate.main
+
+activate-venv:
+	@echo "To activate the virtual environment, run:"
+ifeq ($(OS),Windows_NT)
+	@echo ".venv\\Scripts\\activate"
+else
+	@echo "source .venv/bin/activate"
+endif
+
+create-venv:
+	python3 -m pip install --upgrade pip
+	python3 -m pip install virtualenv
+	python3 -m virtualenv .venv

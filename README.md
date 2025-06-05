@@ -20,9 +20,21 @@ Just follow the steps below!
 
 If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
 
+## 🚀 Quick Start
+
+### Option 1: One-Click Cloud Setup (Recommended)
+
+1. **Click "Open in Gitpod" above or use the button on the platform.**
+2. Wait for the environment to initialize (dependencies are installed automatically).
+3. Start coding in your browser!
+4. To run tests, open a terminal and type:
+   ```bash
+   make test
+   ```
+
 ---
 
-## 🚀 Quick Start
+### Option 2: Manual Local Setup
 
 1. **Clone the repository**
    ```bash

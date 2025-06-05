@@ -166,7 +166,9 @@ cython_debug/
 
 # Local dev files
 .tranco/
-*.json
+#*.json
+# If you want to keep ignoring other .json files, add specific ignores below, but allow devcontainer.json
+# !.devcontainer/devcontainer.json
 *.csv
 Screenshots/
 old_benchmarks/

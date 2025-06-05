@@ -1,0 +1,12 @@
+image:
+  file: .devcontainer/Dockerfile
+
+tasks:
+  - init: make create-venv && make install-flit && make install-dev && make enable-pre-commit-hooks
+    command: echo "Ready to code!"
+    open:
+      - .venv/bin/activate
+vscode:
+  extensions:
+    - ms-python.python
+    - ms-python.vscode-pylance 
