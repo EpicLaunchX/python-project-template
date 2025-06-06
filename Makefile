@@ -105,7 +105,7 @@ check-branch-name:
 	fi
 
 check-conventional-commit:
-	@COMMIT_MSG_FILE=.git/COMMIT_EDITMSG; \
+	@COMMIT_MSG_FILE=$(if $(filter-out 0,$(words $(MAKECMDGOALS))),$(word 2,$(MAKECMDGOALS)),.git/COMMIT_EDITMSG); \
 	if [ ! -f "$$COMMIT_MSG_FILE" ]; then \
 		echo "No commit message file found at $$COMMIT_MSG_FILE. Skipping check."; \
 		exit 0; \

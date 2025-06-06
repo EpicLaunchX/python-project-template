@@ -37,7 +37,8 @@ repos:
         name: check-conventional-commit
         entry: make check-conventional-commit
         language: system
-        pass_filenames: false
+        stages: [commit-msg]
+        pass_filenames: true
       - id: check-coverage
         name: check-coverage
         entry: make test-cov
