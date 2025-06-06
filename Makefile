@@ -33,7 +33,7 @@ install-flit:
 	${PYTHON} -m pip install flit==3.8.0
 
 enable-pre-commit-hooks:
-	${PYTHON} -m pre_commit install
+	${PYTHON} -m pre_commit install --hook-type pre-commit --hook-type pre-push --hook-type commit-msg
 
 build:
 	${PYTHON} -m flit build --format wheel
@@ -105,7 +105,7 @@ check-branch-name:
 	fi
 
 check-conventional-commit:
-	@COMMIT_MSG_FILE=$(if $(filter-out 0,$(words $(MAKECMDGOALS))),$(word 2,$(MAKECMDGOALS)),.git/COMMIT_EDITMSG); \
+	@COMMIT_MSG_FILE="$$(if [ -n \"$$1\" ]; then echo $$1; else echo .git/COMMIT_EDITMSG; fi)"; \
 	if [ ! -f "$$COMMIT_MSG_FILE" ]; then \
 		echo "No commit message file found at $$COMMIT_MSG_FILE. Skipping check."; \
 		exit 0; \
