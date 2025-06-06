@@ -72,7 +72,6 @@ test-cov:
 		${PYTHON} -m coverage report --fail-under=96; \
 	else \
 		echo "⚠️  No tests found. Skipping coverage check. If tests are needed, but you don't write them, it will fail in CI checks" 1>&2; \
-		exit 0; \
 	fi
 
 run:
