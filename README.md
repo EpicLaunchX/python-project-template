@@ -5,30 +5,42 @@ Just follow the steps below!
 
 > **Note:** You do **not** need to fork this repository. You have been added as a collaborator, so please work directly in this repo and create your branches here.
 
+---
+
+## 🚦 Standards & Conventions (**Must Read!**)
+
+⚠️ **All contributors must read the [Project Cheat Sheet](./CHEATSHEET.md) before starting any work.**
+
+This cheat sheet summarizes the required branch naming, commit message, PR, and code quality conventions for this project. Following these standards is essential for your work to be accepted!
+
+---
+
+## 🌐 Preferred: Cloud Development with GitHub Codespaces
+
+> **Recommended!**
+> For the easiest and most reliable onboarding, **use [GitHub Codespaces](https://github.com/features/codespaces)** for a one-click, cloud-based development environment. This is the preferred way to do tasks in this project.
+>
+> Just click the **"Code"** button at the top of this repository and select **"Create codespace on main"**. All dependencies and tools will be set up automatically!
+
+---
+
 ## ✅ First Steps Checklist
 
+> **Note:** If you use GitHub Codespaces (preferred), some of these steps are handled automatically and can be skipped (e.g., environment setup and dependency installation).
+
 - [ ] Accept the invitation for being a collaborator in this repo
-- [ ] Clone the repo
-- [ ] Create and activate virtualenv
-- [ ] Install dependencies
+- [ ] Clone the repo *(Codespaces: done for you)*
+- [ ] Create and activate virtualenv *(Codespaces: done for you)*
+- [ ] Install dependencies *(Codespaces: done for you)*
 - [ ] Implement your first task
 - [ ] Run tests
-- [ ] Open your first Pull Request(pass all checks and earn points upon successful Merge)
+- [ ] Open your first Pull Request (pass all checks and earn points upon successful Merge)
 
+---
 
 ## 💡 Need help?
 
 If you get stuck, jump in to our [Discord](https://discord.gg/2R4BdaczUG)
-
-## 🚀 Quick Start
-
-
-### 🚀 Cloud Development with GitHub Codespaces
-
-> **Tip:**
-> For the easiest onboarding, use [GitHub Codespaces](https://github.com/features/codespaces) for a one-click, cloud-based development environment.
->
-> Just click the **"Code"** button at the top of this repository and select **"Create codespace on main"**. All dependencies and tools will be set up automatically!
 
 ---
 
