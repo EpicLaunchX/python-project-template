@@ -8,7 +8,7 @@ endif
 
 SETTINGS_FILENAME = pyproject.toml
 
-PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run activate-venv create-venv
+PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run activate-venv create-venv check-branch-name
 
 help:
 	@echo "--------------- HELP ---------------"
@@ -81,3 +81,17 @@ create-venv:
 	python3 -m pip install --upgrade pip
 	python3 -m pip install virtualenv
 	python3 -m virtualenv .venv
+
+check-branch-name:
+	@BRANCH_NAME=$$(git rev-parse --abbrev-ref HEAD); \
+	if [ "$$BRANCH_NAME" = "main" ]; then \
+		echo "✅ Branch name '$$BRANCH_NAME' is valid (main branch excluded from check)."; \
+		exit 0; \
+	fi; \
+	PATTERN="^launch_[0-9]+_task_[0-9]+$$"; \
+	if ! echo "$$BRANCH_NAME" | grep -Eq "$$PATTERN"; then \
+		echo "❌ Branch name '$$BRANCH_NAME' does not match the required pattern: launch_{number}_task_{number}"; \
+		exit 1; \
+	else \
+		echo "✅ Branch name '$$BRANCH_NAME' is valid."; \
+	fi

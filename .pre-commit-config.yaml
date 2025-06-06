@@ -28,3 +28,8 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
+      - id: check-branch-name
+        name: check-branch-name
+        entry: make check-branch-name
+        language: system
+        pass_filenames: false
