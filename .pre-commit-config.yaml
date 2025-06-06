@@ -3,11 +3,22 @@ default_language_version:
 
 default_stages: [pre-commit, pre-push]
 
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
+  - pre-push
+
 repos:
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
     hooks:
         - id: absolufy-imports
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [--strict, feat, fix, docs, test, ci, refactor, perf, chore, revert]
   - repo: local
     hooks:
       - id: lint
@@ -33,12 +44,6 @@ repos:
         entry: make check-branch-name
         language: system
         pass_filenames: false
-      - id: check-conventional-commit
-        name: check-conventional-commit
-        entry: make _check-conventional-commit COMMIT_MSG_FILE={}
-        language: system
-        stages: [commit-msg]
-        pass_filenames: true
       - id: check-coverage
         name: check-coverage
         entry: make test-cov

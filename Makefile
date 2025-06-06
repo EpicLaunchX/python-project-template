@@ -33,7 +33,7 @@ install-flit:
 	${PYTHON} -m pip install flit==3.8.0
 
 enable-pre-commit-hooks:
-	${PYTHON} -m pre_commit install --hook-type pre-commit --hook-type pre-push --hook-type commit-msg
+	${PYTHON} -m pre_commit install
 
 build:
 	${PYTHON} -m flit build --format wheel
@@ -103,27 +103,3 @@ check-branch-name:
 	else \
 		echo "✅ Branch name '$$BRANCH_NAME' is valid."; \
 	fi
-
-.PHONY: check-conventional-commit
-check-conventional-commit:
-	@$(MAKE) _check-conventional-commit COMMIT_MSG_FILE=.git/COMMIT_EDITMSG
-
-_check-conventional-commit:
-	@COMMIT_MSG_FILE="$(COMMIT_MSG_FILE)"; \
-	if [ ! -f "$$COMMIT_MSG_FILE" ]; then \
-		echo "No commit message file found at $$COMMIT_MSG_FILE. Skipping check."; \
-		exit 0; \
-	fi; \
-	COMMIT_MSG=$$(cat $$COMMIT_MSG_FILE); \
-	PATTERN="^(feat|fix|docs|test|ci|refactor|perf|chore|revert)(\\([a-zA-Z0-9_-]+\\))?: .+"; \
-	if ! echo "$$COMMIT_MSG" | grep -Eq "$$PATTERN"; then \
-		echo "❌ Commit message does not follow Conventional Commits format."; \
-		echo "Allowed types: feat, fix, docs, test, ci, refactor, perf, chore, revert"; \
-		echo "Example: feat(login): add login button"; \
-		exit 1; \
-	else \
-		echo "✅ Commit message follows Conventional Commits format."; \
-	fi
-
-commit-msg:
-	@$(MAKE) _check-conventional-commit COMMIT_MSG_FILE="$(file)"
