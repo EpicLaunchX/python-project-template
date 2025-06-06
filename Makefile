@@ -8,7 +8,7 @@ endif
 
 SETTINGS_FILENAME = pyproject.toml
 
-PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run activate-venv create-venv check-branch-name
+PHONY = help install install-dev build format lint type-check secure test install-flit enable-pre-commit-hooks run activate-venv create-venv check-branch-name check-conventional-commit
 
 help:
 	@echo "--------------- HELP ---------------"
@@ -94,4 +94,21 @@ check-branch-name:
 		exit 1; \
 	else \
 		echo "✅ Branch name '$$BRANCH_NAME' is valid."; \
+	fi
+
+check-conventional-commit:
+	@COMMIT_MSG_FILE=.git/COMMIT_EDITMSG; \
+	if [ ! -f "$$COMMIT_MSG_FILE" ]; then \
+		echo "No commit message file found at $$COMMIT_MSG_FILE. Skipping check."; \
+		exit 0; \
+	fi; \
+	COMMIT_MSG=$$(cat $$COMMIT_MSG_FILE); \
+	PATTERN="^(feat|fix|docs|test|ci|refactor|perf|chore|revert)(\\([a-zA-Z0-9_-]+\\))?: .+"; \
+	if ! echo "$$COMMIT_MSG" | grep -Eq "$$PATTERN"; then \
+		echo "❌ Commit message does not follow Conventional Commits format."; \
+		echo "Allowed types: feat, fix, docs, test, ci, refactor, perf, chore, revert"; \
+		echo "Example: feat(login): add login button"; \
+		exit 1; \
+	else \
+		echo "✅ Commit message follows Conventional Commits format."; \
 	fi

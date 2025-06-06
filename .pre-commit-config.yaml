@@ -33,3 +33,8 @@ repos:
         entry: make check-branch-name
         language: system
         pass_filenames: false
+      - id: check-conventional-commit
+        name: check-conventional-commit
+        entry: make check-conventional-commit
+        language: system
+        pass_filenames: false
