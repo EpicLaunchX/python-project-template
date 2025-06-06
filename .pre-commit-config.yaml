@@ -38,3 +38,8 @@ repos:
         entry: make check-conventional-commit
         language: system
         pass_filenames: false
+      - id: check-coverage
+        name: check-coverage
+        entry: make test-cov
+        language: system
+        pass_filenames: false

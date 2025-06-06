@@ -66,6 +66,14 @@ test-slow:
 test-integration:
 	${PYTHON} -m pytest -svvv -m "integration" tests
 
+test-cov:
+	@if find tests -type f -name 'test_*.py' | grep -q .; then \
+		${PYTHON} -m pytest --cov=src --cov-report=term-missing; \
+		${PYTHON} -m coverage report --fail-under=96; \
+	else \
+		echo "⚠️  No tests found. Skipping coverage check. If tests are needed, but you don't write them, it will fail in CI checks"; \
+	fi
+
 run:
 	${PYTHON} -m src.pytemplate.main
 
