@@ -104,8 +104,12 @@ check-branch-name:
 		echo "✅ Branch name '$$BRANCH_NAME' is valid."; \
 	fi
 
+.PHONY: check-conventional-commit
 check-conventional-commit:
-	@COMMIT_MSG_FILE="$$(if [ -n \"$$1\" ]; then echo $$1; else echo .git/COMMIT_EDITMSG; fi)"; \
+	@$(MAKE) _check-conventional-commit COMMIT_MSG_FILE=.git/COMMIT_EDITMSG
+
+_check-conventional-commit:
+	@COMMIT_MSG_FILE="$(COMMIT_MSG_FILE)"; \
 	if [ ! -f "$$COMMIT_MSG_FILE" ]; then \
 		echo "No commit message file found at $$COMMIT_MSG_FILE. Skipping check."; \
 		exit 0; \
@@ -120,3 +124,6 @@ check-conventional-commit:
 	else \
 		echo "✅ Commit message follows Conventional Commits format."; \
 	fi
+
+commit-msg:
+	@$(MAKE) _check-conventional-commit COMMIT_MSG_FILE="$(file)"
